@@ -22,7 +22,6 @@ os.environ["OPENAI_API_KEY"] = api_key
 
 # text_splitter = SpacyTextSplitter(chunk_size=500, pipeline="ko_core_news_sm")
 model = 'gpt-3.5-turbo'
-client = OpenAI(api_key=os.environ.get(api_key))
 
 embedding_model="text-embedding-ada-002"
 
@@ -60,7 +59,7 @@ def extract_text1(dir_path, file_name): # Extract
         text = file.read()
     return text
 
-def embed_texts(documents:str)->list: # Transform
+def embed_texts(documents:str, client)->list: # Transform
     embed_documents = []
     documents = [documents]
     for doc in documents:
@@ -70,7 +69,7 @@ def embed_texts(documents:str)->list: # Transform
         embed_documents.append(embed_doc)
     return embed_documents
 
-def get_text_embedding(document:str): # Transform
+def get_text_embedding(document:str, client): # Transform
     embedding = client.embeddings.create(input=document,
                                  model='text-embedding-ada-002').data[0].embedding
     return embedding
