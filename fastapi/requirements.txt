@@ -1,0 +1,7 @@
+fastapi
+pydantic
+uvicorn
+redis
+pymongo
+chromadb
+openai
