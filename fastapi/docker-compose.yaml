@@ -15,31 +15,6 @@ services:
       default_bridge:
         ipv4_address: 172.22.0.2
 
-  mongodb:
-    container_name: mongodb
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-    networks:
-      default_bridge:
-        ipv4_address: 172.22.0.3
-  chromadb:
-    container_name: chromadb
-    image: chromadb/chroma:latest
-    ports:
-      - "8000:8000"
-    networks:
-      default_bridge:
-        ipv4_address: 172.22.0.4
-  redis:
-    container_name: redis
-    image: redis:latest
-    ports:
-      - "6379:6379" 
-    networks:
-      default_bridge:
-        ipv4_address: 172.22.0.5
-
 networks:
   default_bridge:
     ipam:
